@@ -28,8 +28,8 @@ Flowly Backend API es la API que alimenta la aplicación **Flowly**, diseñada p
 **USUARIOS**
 
 - **POST /users/register**
-Descripción: Registrar un nuevo usuario.
-Cuerpo de la solicitud (JSON):
+  Descripción: Registrar un nuevo usuario.
+  Cuerpo de la solicitud (JSON):
 {
     "nombre": "Juan",
     "apellido": "Pérez",
