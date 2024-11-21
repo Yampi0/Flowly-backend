@@ -139,7 +139,7 @@ router.get('/:userId', async (req, res) => {
 
     try {
         const userData = await getUser(userId);
-        res.status(200).json(userData); // Devuelve los datos del usuario
+        res.status(200).json(userData);
     } catch (error) {
         console.error('Error al obtener el usuario:', error.message);
         res.status(404).json({ error: error.message });

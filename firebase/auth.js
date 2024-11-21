@@ -1,11 +1,10 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from './config.js';
 
-// Registrar un usuario
 export const registerUser = async (email, password) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        return userCredential.user; // Retorna el UID del usuario
+        return userCredential.user;
     } catch (error) {
         throw new Error(error.message);
     }
