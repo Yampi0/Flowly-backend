@@ -28,8 +28,8 @@ Flowly Backend API es la API que alimenta la aplicación **Flowly**, diseñada p
 **USUARIOS**
 
 - **POST /users/register**
-- Descripción: Registrar un nuevo usuario.
-- Cuerpo de la solicitud (JSON):
+Descripción: Registrar un nuevo usuario.
+Cuerpo de la solicitud (JSON):
 {
     "nombre": "Juan",
     "apellido": "Pérez",
@@ -42,9 +42,8 @@ Flowly Backend API es la API que alimenta la aplicación **Flowly**, diseñada p
 - 400 Bad Request: Faltan datos obligatorios.
 
 **GET /users/{userId}**
-- Descripción: Obtener la información de un usuario y sus suscripciones.
-- Parámetros de ruta:
-- userId: ID único del usuario.
+Descripción: Obtener la información de un usuario y sus suscripciones.
+Parámetros de ruta: userId: ID único del usuario.
 
 *Respuestas:*
 200 OK: Información del usuario encontrada.
@@ -53,8 +52,8 @@ Flowly Backend API es la API que alimenta la aplicación **Flowly**, diseñada p
 **SUSCRIPCIONES**
 
 - **POST /users/register**
-- Descripción: Agregar una nueva suscripción para un usuario.
-- Cuerpo de la solicitud (JSON):
+Descripción: Agregar una nueva suscripción para un usuario.
+Cuerpo de la solicitud (JSON):
 {
     "userId": "12345",
     "subscription": {
