@@ -10,7 +10,6 @@ export const registerUser = async (email, password) => {
     }
 };
 
-// Iniciar sesión
 export const loginUser = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -20,7 +19,6 @@ export const loginUser = async (email, password) => {
     }
 };
 
-// Cerrar sesión
 export const logoutUser = async () => {
     try {
         await signOut(auth);
