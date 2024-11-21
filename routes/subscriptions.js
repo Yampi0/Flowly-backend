@@ -3,6 +3,94 @@ import { addSubscription } from '../firebase/database.js';
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /subscriptions/add:
+ *   post:
+ *     summary: Agregar una nueva suscripción
+ *     description: Asocia una suscripción con un usuario existente en la base de datos.
+ *     tags: [Subscriptions]
+ *     requestBody:
+ *       description: Datos necesarios para agregar una suscripción.
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - userId
+ *               - subscription
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: ID del usuario al que se asociará la suscripción.
+ *               subscription:
+ *                 type: object
+ *                 description: Detalles de la suscripción.
+ *                 required:
+ *                   - nombre
+ *                   - precio
+ *                   - moneda
+ *                   - fechaFacturacion
+ *                   - tipoPlan
+ *                   - imagen
+ *                 properties:
+ *                   nombre:
+ *                     type: string
+ *                     description: "Nombre del servicio de suscripción (por ejemplo: Netflix)"
+ *                   precio:
+ *                     type: number
+ *                     description: Precio de la suscripción.
+ *                   moneda:
+ *                     type: string
+ *                     description: "Moneda en la que se paga la suscripción (ejemplo: USD)"
+ *                   fechaFacturacion:
+ *                     type: string
+ *                     format: date
+ *                     description: Fecha de facturación en formato YYYY-MM-DD.
+ *                   tipoPlan:
+ *                     type: string
+ *                     description: "Tipo de plan contratado (ejemplo: Premium)"
+ *                   imagen:
+ *                     type: string
+ *                     format: uri
+ *                     description: URL de la imagen del servicio de suscripción.
+ *             example:
+ *               userId: "abc12345"
+ *               subscription:
+ *                 nombre: Netflix
+ *                 precio: 15
+ *                 moneda: USD
+ *                 fechaFacturacion: 2024-01-01
+ *                 tipoPlan: Premium
+ *                 imagen: https://example.com/netflix-logo.png
+ *     responses:
+ *       200:
+ *         description: Suscripción añadida correctamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Mensaje de éxito.
+ *               example:
+ *                 message: Suscripción añadida correctamente.
+ *       400:
+ *         description: Error en la solicitud. Ocurre si los datos son inválidos.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Mensaje de error detallado.
+ *               example:
+ *                 error: "Faltan datos obligatorios en la suscripción."
+ */
+
 router.post('/add', async (req, res) => {
     const { userId, subscription } = req.body;
 
@@ -19,14 +107,14 @@ router.post('/add', async (req, res) => {
         moneda,
         fechaFacturacion,
         tipoPlan,
-        imagen
+        imagen,
     };
 
     try {
         // Formatear la fecha de facturación
         const formattedSubscription = {
             ...subscription,
-            fechaFacturacion: formatDate(subscription.fechaFacturacion) // Formatear la fecha
+            fechaFacturacion: formatDate(subscription.fechaFacturacion), // Formatear la fecha
         };
 
         // Guardar la suscripción en Firestore
@@ -34,7 +122,7 @@ router.post('/add', async (req, res) => {
 
         res.status(200).json({ message: "Suscripción añadida correctamente" });
     } catch (error) {
-        console.error('Error al agregar suscripción:', error.message);
+        console.error("Error al agregar suscripción:", error.message);
         res.status(400).json({ error: error.message });
     }
 });
