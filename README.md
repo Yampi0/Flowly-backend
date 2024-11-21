@@ -73,22 +73,6 @@ Parámetros de ruta: userId: ID único del usuario.
 ## **DOCUMENTACIÓN INTERACTIVA
 - **https://flowly-backend.up.railway.app/api-docs**
 
-## **ARQUITECTURA DEL PROYECTO** 
-
-flowly-backend/
-├── firebase/         # Configuración y funciones relacionadas con Firebase
-│   ├── auth.js       # Gestión de autenticación de usuarios
-│   ├── config.js     # Configuración de Firebase
-│   └── database.js   # Funciones relacionadas con Firestore
-├── routes/           # Rutas de la API
-│   ├── users.js      # Rutas relacionadas con usuarios
-│   └── subscriptions.js # Rutas relacionadas con suscripciones
-├── swagger.js        # Configuración de Swagger para la documentación
-├── .env              # Variables de entorno (no incluido en el repositorio)
-├── index.js          # Archivo principal de la aplicación
-├── package.json      # Dependencias y scripts del proyecto
-└── README.md         # Documentación del proyecto
-
 ## **DESPLIEGUE**
 
 - El proyecto está desplegado en Railway. Para acceder a la API es a través de la siguiente URL:
