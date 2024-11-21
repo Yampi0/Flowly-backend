@@ -1,0 +1,11 @@
+# Dependencias
+node_modules/
+
+# Archivos de entorno
+.env
+
+# Archivos de caché y logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
